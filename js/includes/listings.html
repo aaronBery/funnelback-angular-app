@@ -1,0 +1,13 @@
+<!--<input ng-model="app.direction" type="checkbox" ng-click="reverse(app)" ng-true-value="'reverse'" />Reverse Listing-->
+<ul>
+<li ng-repeat="(i,x) in xhrDataResults | facetFilterListings:results | filter:x as results " ng-show="showListing(i)">
+  <h3><a href="{{x.liveUrl}}">{{x.title}}</a></h3>
+</li>
+</ul>
+ <div class="howto-results howto-results__pagination">
+    <ul ng-click="log()">
+        <li ng-repeat="p in paginationArr" ng-class="{'currentPage': p===currentPage}">
+            <a href="#" ng-click="updatePage(p)">{{p}}</a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,16 @@
+<form name="facet-navigation--form">
+    <fieldset class="facet-navigation__input">
+        <input name="query" type="text" ng-model="query.val" ng-filter="" ng-change="updateMeta(this.results)" />
+    </fieldset>
+    <button type="button" ng-model="query" ng-click="query.val=''">Reset</button>
+    <div class="facet-navigation--checkbox-container">
+    <div ng-repeat="g in xhrDataFacets">
+        <fieldset class="facet-navigation__fieldset">
+                <h4 ng-if="showFacetCount(g)">{{ g.name }}</h4>
+                <span ng-repeat="f in g.categories[0].values">
+              <input ng-if="facetHasCount(f.data)" type="checkbox" name="{{ f.queryStringParam }}" ng-checked="isInputChecked(currentQryStr=f.data)" ng-click="filterFacets(f.queryStringParam,f.data)"><span class="facet-navigation--checkbox-label">{{ f.label }} <span class="facet-navigation__counter" ng-bind="'(' + getCount(f.data) + ')'"></span></span>
+                </span>
+            </fieldset>
+    </div>
+  </div>
+</form>
